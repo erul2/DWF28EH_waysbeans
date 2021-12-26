@@ -1,11 +1,18 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { API } from "../../config/api";
-import { Modal, Form, FloatingLabel, Alert } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import MiniAlert from "../modal/miniAlert";
 import styles from "./auth.module.css";
 
 export default function Auth(props) {
+  const [loading, setLoading] = useState({
+    isLoading: false,
+    success: false,
+    error: false,
+    message: "",
+  });
   const [message, setMessage] = useState(null);
   const [state, dispatch] = useContext(UserContext);
   const navigate = useNavigate();
@@ -62,9 +69,26 @@ export default function Auth(props) {
       props.close();
       navigate("/");
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        setLoading({
+          isLodaing: false,
+          success: false,
+          error: true,
+          message: error.response.data.message,
+        });
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
     }
   };
+
+  useEffect(() => {
+    setLoading({ isLoading: false, error: false, message: "" });
+  }, [props.type]);
+
   return (
     <Modal
       dialogClassName="modal-login"
@@ -78,6 +102,7 @@ export default function Auth(props) {
         </div>
         {message && message}
         <Form onSubmit={handleOnSubmit} className={styles.form}>
+          {loading.error ? <MiniAlert message={loading.message} /> : null}
           <Form.Control
             onChange={handleOnChange}
             type="text"
@@ -109,11 +134,13 @@ export default function Auth(props) {
             />
           ) : null}
           <button type="submit" className={styles.modalBtn}>
-            Login
+            {props.type === "LOGIN" ? "Login" : "Register"}
           </button>
           <p className={styles.modalDesc}>
             Don't have an account ? Click{" "}
-            <span onClick={props.switch}>Here</span>
+            <span className={styles.switch} onClick={props.switch}>
+              Here
+            </span>
           </p>
         </Form>
       </Modal.Body>

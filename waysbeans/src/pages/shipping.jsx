@@ -5,6 +5,7 @@ import Navbar from "../components/navbar/navbar";
 import styles from "./shipping.module.css";
 import OrderCard from "../components/orderCard";
 import { API } from "../config/api";
+import MiniAlert from "../components/modal/miniAlert";
 import Alert from "../components/modal/alert";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +13,10 @@ export default function Shipping() {
   const navigate = useNavigate();
   const [cart, cartDispatch] = useContext(CartContext);
   const [product, setProduct] = useState({});
-  const [alert, setAlert] = useState({ show: false, message: "" });
+  const [alert, setAlert] = useState({
+    show: false,
+    message: "",
+  });
   const [loading, setLoading] = useState({ isLoading: false, error: null });
   const [form, setForm] = useState({
     name: "",
@@ -37,7 +41,7 @@ export default function Shipping() {
     if (form.attachment.length === 0)
       return setLoading({
         setLoading: false,
-        message: "Please attach proof of transaction",
+        error: "Please attach proof of transaction",
       });
     try {
       e.preventDefault();
@@ -75,7 +79,10 @@ export default function Shipping() {
       }, 3000);
     } catch (error) {
       if (error.response) {
-        setLoading({ isLodaing: false, message: error.response.data.message });
+        setLoading({
+          isLodaing: false,
+          error: error.response.data.message,
+        });
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         console.log(error.response.data);
@@ -110,86 +117,88 @@ export default function Shipping() {
   return (
     <>
       <Navbar />
-      <Container className={`${styles.container} px-5`}>
-        <Row className="px-5">
-          <Col>
-            <h2 className={styles.title}>Shipping</h2>
-            <div>{loading.message}</div>
-            <form className={styles.form}>
-              <input
-                onChange={handleChange}
-                className={styles.input}
-                type="text"
-                placeholder="Name"
-                value={form.name}
-                name="name"
-              />
-              <input
-                onChange={handleChange}
-                className={styles.input}
-                type="email"
-                placeholder="Email"
-                value={form.email}
-                name="email"
-              />
-              <input
-                onChange={handleChange}
-                className={styles.input}
-                type="number"
-                placeholder="Phone"
-                value={form.phone}
-                name="phone"
-              />
-              <input
-                onChange={handleChange}
-                className={styles.input}
-                type="number"
-                placeholder="Pos Code"
-                value={form.posCode}
-                name="posCode"
-              />
-              <textarea
-                onChange={handleChange}
-                rows="3"
-                className={styles.textarea}
-                placeholder="Address"
-                name="address"
-                value={form.address}
-              ></textarea>
-
-              <label className={styles.attachment} htmlFor="attachment">
-                <span>Attache of transaction</span>
-                <img
-                  className={styles.attachIcon}
-                  src="/icon/attach.svg"
-                  alt=""
+      <Container className="px-xs-1 px-xl-5">
+        <Container className="px-xs-1 px-lg-5 mb-5">
+          <Row>
+            <Col>
+              <h2 className={styles.title}>Shipping</h2>
+              {loading.error ? <MiniAlert message={loading.error} /> : null}
+              <form className={styles.form}>
+                <input
+                  onChange={handleChange}
+                  className={styles.input}
+                  type="text"
+                  placeholder="Name"
+                  value={form.name}
+                  name="name"
                 />
-              </label>
-              <input
-                id="attachment"
-                type="file"
-                name="attachment"
-                hidden
-                onChange={handleChange}
+                <input
+                  onChange={handleChange}
+                  className={styles.input}
+                  type="email"
+                  placeholder="Email"
+                  value={form.email}
+                  name="email"
+                />
+                <input
+                  onChange={handleChange}
+                  className={styles.input}
+                  type="number"
+                  placeholder="Phone"
+                  value={form.phone}
+                  name="phone"
+                />
+                <input
+                  onChange={handleChange}
+                  className={styles.input}
+                  type="number"
+                  placeholder="Pos Code"
+                  value={form.posCode}
+                  name="posCode"
+                />
+                <textarea
+                  onChange={handleChange}
+                  rows="3"
+                  className={styles.textarea}
+                  placeholder="Address"
+                  name="address"
+                  value={form.address}
+                ></textarea>
+
+                <label className={styles.attachment} htmlFor="attachment">
+                  <span>Attache of transaction</span>
+                  <img
+                    className={styles.attachIcon}
+                    src="/icon/attach.svg"
+                    alt=""
+                  />
+                </label>
+                <input
+                  id="attachment"
+                  type="file"
+                  name="attachment"
+                  hidden
+                  onChange={handleChange}
+                />
+              </form>
+            </Col>
+            <Col>
+              <OrderCard
+                product={{
+                  photo: product?.photo,
+                  name: product?.name,
+                  date: ["sunday", "22 dec 2021"],
+                  price: product?.price,
+                  qty: cart.products.qty,
+                  subTotal: 600,
+                }}
               />
-            </form>
-          </Col>
-          <Col>
-            <OrderCard
-              product={{
-                photo: product?.photo,
-                name: product?.name,
-                date: ["sunday", "22 dec 2021"],
-                price: product?.price,
-                qty: cart.products.qty,
-                subTotal: 600,
-              }}
-            />
-            <button onClick={handleSubmit} className={styles.btnPay}>
-              Pay
-            </button>
-          </Col>
-        </Row>
+              <button onClick={handleSubmit} className={styles.btnPay}>
+                Pay
+              </button>
+            </Col>
+          </Row>
+        </Container>
       </Container>
 
       {alert.show ? <Alert message={alert.message} /> : null}

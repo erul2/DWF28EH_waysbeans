@@ -11,13 +11,13 @@ function OrderList(props) {
       <div xs={6} className="flex-grow-1 ms-3">
         <div className={cssMod.name}>{props.name}</div>
         <div className={cssMod.btnGroup}>
-          <div className={cssMod.btn} onClick={props.sub}>
+          <button className={cssMod.btn} onClick={props.sub}>
             -
-          </div>
+          </button>
           <div className={cssMod.qty}>{props.qty}</div>
-          <div className={cssMod.btn} onClick={props.add}>
+          <button className={cssMod.btn} onClick={props.add}>
             +
-          </div>
+          </button>
         </div>
       </div>
       <div xs={3} className={`${cssMod.price} d-flex flex-column `}>

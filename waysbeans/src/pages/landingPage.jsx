@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/userContext";
+import { Container } from "react-bootstrap";
 import Navbar from "../components/navbar/navbar";
 import Auth from "../components/auth/auth";
 import ProductsList from "../components/product/producsList";
@@ -11,27 +12,30 @@ export default function LandingPage() {
     show: false,
     type: "",
   });
-  useEffect(() => console.log(state), [state]);
 
   return (
     <>
       <Navbar isLogin={state.isLogin} setModal={setModal} />
-      <Hero />
-      <ProductsList />
+      <Container className="px-xs-1 px-xl-5">
+        <Container className="px-xs-1 px-lg-5 mb-5">
+          <Hero />
+          <ProductsList login={() => setModal({ show: true, type: "LOGIN" })} />
 
-      {modal.show ? (
-        <Auth
-          show={modal.show}
-          type={modal.type}
-          close={() => setModal({ show: false, type: null })}
-          switch={() =>
-            setModal({
-              show: true,
-              type: modal.type === "LOGIN" ? "REGISTER" : "LOGIN",
-            })
-          }
-        />
-      ) : null}
+          {modal.show ? (
+            <Auth
+              show={modal.show}
+              type={modal.type}
+              close={() => setModal({ show: false, type: null })}
+              switch={() =>
+                setModal({
+                  show: true,
+                  type: modal.type === "LOGIN" ? "REGISTER" : "LOGIN",
+                })
+              }
+            />
+          ) : null}
+        </Container>
+      </Container>
     </>
   );
 }

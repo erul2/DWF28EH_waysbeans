@@ -1,0 +1,24 @@
+.bg {
+  background-color: #f6e6da;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bg:hover {
+  cursor: pointer;
+}
+
+.name {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #613d2b;
+}
+
+.price,
+.stock {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  color: #974a4a;
+}

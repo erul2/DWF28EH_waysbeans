@@ -17,9 +17,9 @@ export default function AddProduct() {
     description: "",
     photo: "",
   });
+
   const [loading, setLoading] = useState({
     isLoading: false,
-    success: false,
     error: false,
     message: "",
   });
@@ -42,7 +42,7 @@ export default function AddProduct() {
       const response = await API.post("/product", formData, config);
 
       if (true) {
-        setLoading({ isLoading: true, success: true });
+        setLoading({ isLoading: true });
         setTimeout(() => navigate("/"), 2000);
       }
     } catch (error) {

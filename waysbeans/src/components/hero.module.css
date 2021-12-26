@@ -5,19 +5,40 @@
 
 .content {
   background-color: #dbb699;
-  margin-left: 196px;
-  margin-right: 300px;
-  padding: 100px;
+  margin-right: 75px;
+}
+
+.logo {
+  width: 50%;
+}
+
+.logo,
+.waves {
+  width: 100%;
+}
+
+.title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.desc {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 18px;
 }
 
 .container {
   position: relative;
 }
 
-.image {
+.imageContainer {
   position: absolute;
-  top: 40px;
-  right: 196px;
-  width: 432px;
-  height: 272px;
+  top: 30px;
+  right: 0px;
+}
+
+.image {
+  width: 100%;
 }

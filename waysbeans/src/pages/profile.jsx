@@ -5,7 +5,7 @@ import Navbar from "../components/navbar/navbar";
 import { API } from "../config/api";
 import { Link } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
-import cssMod from "./Profile.module.css";
+import styles from "./Profile.module.css";
 import OrderCard from "../components/orderCard";
 
 export default function Profile() {
@@ -32,9 +32,7 @@ export default function Profile() {
       <Container className="px-xs-1 px-md-3 px-xl-5 mt-5 pb-5">
         <Row>
           <Col md={7} xl={8} className="mb-sm-5 mb-lg-0">
-            <h4 className="subtitle mb-4">
-              {state.user.role === "user" ? "Profile" : "Profile Partner"}
-            </h4>
+            <h2 className={styles.title}>My Profile</h2>
             <div className="d-flex">
               <div className="d-flex flex-column">
                 <Link to="/edit-profile" className="mbtn">
@@ -52,27 +50,19 @@ export default function Profile() {
                 </Link>
               </div>
               <div className="ms-4">
-                <div className={cssMod.titleGroup}>
-                  <div className={cssMod.title}>Full Name</div>
-                  <div className={cssMod.valueName}>{state.user.fullName}</div>
+                <div className={styles.dataGroup}>
+                  <div className={styles.dataTitle}>Full Name</div>
+                  <div className={styles.value}>{state.user.fullName}</div>
                 </div>
-                <div className={cssMod.titleGroup}>
-                  <div className={cssMod.title}>Email</div>
-                  <div className={cssMod.value}>{state.user.email}</div>
-                </div>
-                <div className={cssMod.titleGroup}>
-                  <div className={cssMod.title}>Phone</div>
-                  <div className={cssMod.value}>{state.user.phone}</div>
+                <div className={styles.dataGroup}>
+                  <div className={styles.dataTitle}>Email</div>
+                  <div className={styles.value}>{state.user.email}</div>
                 </div>
               </div>
             </div>
           </Col>
           <Col md={5} xl={4}>
-            <h4 className="subtitle mb-4">
-              {state.user.role === "user"
-                ? "History Transaction"
-                : "History Order"}
-            </h4>
+            <h2 className={styles.title}>My Transactions</h2>
             {trx?.length > 0 ? (
               trx.map((item, index) => (
                 <OrderCard
@@ -94,40 +84,5 @@ export default function Profile() {
         </Row>
       </Container>
     </>
-  );
-}
-
-function Transaction(props) {
-  let statusStyle = "statusWaitingApprove";
-
-  if (props.status === "On the way") {
-    statusStyle = "statusOnTheWay";
-  } else if (props.status === "Order success") {
-    statusStyle = "statusOrderSuccess";
-  } else if (props.status === "Cancel") {
-    statusStyle = "statusOrderCancle";
-  }
-
-  return (
-    <Row className={`${cssMod.trxGroup} my-3`}>
-      <Col xs={8} md={6} lg={7} className="d-flex flex-column">
-        <div className={`${cssMod.trxName} abhaya`}>{props.name}</div>
-        <div>
-          <span className={cssMod.trxDay}>{props.date.day}, </span>{" "}
-          {props.date.date}
-          {/* {props.date} */}
-        </div>
-        <div className={cssMod.trxTotal}>Total : {props.total}</div>
-      </Col>
-      <Col xs={4} md={6} lg={5} className="d-flex flex-column">
-        <div className={`d-flex align-items-center`}>
-          <div className={cssMod.trxLogo}>WaysFood </div>
-          <img src="/icon/logoicon.svg" />
-        </div>
-        <div className={`${cssMod.trxStatus} ${statusStyle}`}>
-          {props.status}
-        </div>
-      </Col>
-    </Row>
   );
 }

@@ -5,12 +5,7 @@ export default function MiniAlert(props) {
   const [show, setShow] = useState(true);
 
   return (
-    <Alert
-      show={show}
-      variant="danger"
-      onClose={() => setShow(false)}
-      dismissible
-    >
+    <Alert show={show} variant="danger">
       {props.message}
     </Alert>
   );

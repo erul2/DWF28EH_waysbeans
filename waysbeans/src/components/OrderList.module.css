@@ -10,9 +10,10 @@
 }
 
 .name {
-  font-family: "Abhaya Libre", serif;
-  color: var(--primary);
-  font-size: 1.3rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: #613d2b;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .btnGroup {
@@ -24,8 +25,12 @@
 .btn {
   width: 2rem;
   font-size: 1.4rem;
-  font-weight: bold;
+  font-weight: 900;
   text-align: center;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
 }
 
 .btn:hover {
@@ -33,19 +38,20 @@
 }
 
 .qty {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
-  width: 2.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  width: 30px;
+  height: 20px;
   background: #f6e6da;
   border-radius: 5px;
-  font-weight: 600;
   text-align: center;
+  font-weight: 700;
 }
 
 .price {
-  color: red;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
+  color: #974a4a;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
 }
 
 .trash:hover {

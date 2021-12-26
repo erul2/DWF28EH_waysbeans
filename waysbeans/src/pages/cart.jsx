@@ -47,60 +47,6 @@ function CartOrder() {
     if (!cart.products?.id) goBack();
   }, [cart]);
 
-  const handleSubmit = async () => {
-    // const products = cart.orders.map((menu) => {
-    //   return {
-    //     id: menu.id,
-    //     qty: menu.qty,
-    //   };
-    // });
-    // const body = JSON.stringify({
-    //   deliveryAddress: location,
-    //   resto: cart.seller.id,
-    //   products,
-    // });
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // };
-    // const response = await API.post("/transaction", body, config);
-    // const data = response.data.data.transaction;
-    // cartDispatch({
-    //   type: "UPDATE_STATUS",
-    //   payload: {
-    //     id: data.id,
-    //     status: data.status,
-    //   },
-    // });
-    // sendNotif({
-    //   id: data.id,
-    // });
-  };
-
-  const handleFinishOrder = async () => {
-    // try {
-    //   const config = {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   };
-    //   const body = JSON.stringify({
-    //     status: "Order success",
-    //   });
-    //   await API.put(`/transaction/${cart.id}`, body, config);
-    //   cartDispatch({
-    //     type: "CLEAR_CART",
-    //   });
-    //   sendNotif({
-    //     id: cart.id,
-    //   });
-    //   navigate("/");
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
-
   return (
     <>
       <Navbar />
@@ -108,10 +54,10 @@ function CartOrder() {
         <Container className="mt-5 pb-5">
           {cart.products?.id ? (
             <>
-              <h4 className="subtitle mb-4">My Cart</h4>
+              <h2 className={styles.title}>My Cart</h2>
               <Row>
                 <span className={styles.description}>Review Your Order</span>
-                <Col xs={12} md={8}>
+                <Col xs={12} md={8} className="pe-0 pe-md-4 mb-4">
                   <div className={styles.divider} />
                   <OrderList
                     add={() => cartDispatch({ type: "INCREMENT" })}
@@ -128,40 +74,33 @@ function CartOrder() {
                   <table className={styles.table}>
                     <tbody>
                       <tr>
-                        <td>Subtotal</td>
+                        <td className={styles.text}>Subtotal</td>
                         <td className={styles.right}>20000</td>
                       </tr>
                       <tr>
-                        <td>Qty</td>
-                        <td className={`${styles.qty}`}>20000</td>
-                      </tr>
-                      <tr>
-                        <td>Shipping Cost</td>
-                        <td className={styles.right}>15000</td>
+                        <td className={`${styles.text} pb-3`}>Qty</td>
+                        <td className={styles.right}>20000</td>
                       </tr>
                       <tr className={styles.dividerGroup}>
                         <td className={styles.divider} />
                         <td className={styles.divider} />
                       </tr>
                       <tr>
-                        <td>Total</td>
-                        <td className={styles.right}>20000</td>
+                        <td className={styles.textTotal}>Total</td>
+                        <td className={styles.textTotalRight}>20000</td>
                       </tr>
                     </tbody>
                   </table>
-                  <button onClick={() => navigate("/shipping")}>
+                  <button
+                    className={styles.btn}
+                    onClick={() => navigate("/shipping")}
+                  >
                     Procced To Checkout
                   </button>
                 </Col>
               </Row>
             </>
-          ) : (
-            <div className="d-flex justify-content-center align-items-center mt-5 pt-5">
-              <h2 className="mt-5">
-                Let's order delicious food at the best restaurant
-              </h2>
-            </div>
-          )}
+          ) : null}
         </Container>
       </Container>
       {alert.show ? <Alert danger message={alert.message} /> : null}
