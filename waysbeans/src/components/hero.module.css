@@ -1,0 +1,23 @@
+.hero {
+  min-height: 400px;
+  margin-bottom: 50px;
+}
+
+.content {
+  background-color: #dbb699;
+  margin-left: 196px;
+  margin-right: 300px;
+  padding: 100px;
+}
+
+.container {
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  top: 40px;
+  right: 196px;
+  width: 432px;
+  height: 272px;
+}

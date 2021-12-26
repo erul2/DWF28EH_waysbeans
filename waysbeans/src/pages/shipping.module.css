@@ -1,0 +1,67 @@
+.title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #613d2b;
+  margin-bottom: 25px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #613d2b49;
+  color: #613d2b93;
+  font-size: 18px;
+  padding: 10px;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 3px solid #613d2b;
+}
+
+.attachment {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 18px;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #613d2b49;
+  color: #613d2b93;
+  border: 3px solid #613d2b;
+  width: fit-content;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.attachIcon {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.textarea {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #613d2b49;
+  color: #613d2b93;
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 3px solid #613d2b;
+}
+
+.btnPay {
+  width: 100%;
+  background-color: #613d2b;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+}

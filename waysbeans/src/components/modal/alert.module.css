@@ -1,0 +1,13 @@
+.danger {
+  color: red;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+}
+
+.success {
+  color: #469f74;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+}

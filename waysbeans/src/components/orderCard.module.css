@@ -1,0 +1,94 @@
+.container {
+  background-color: #f6e6da;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.photo {
+  min-width: 80px;
+  min-height: 120px;
+  max-width: 80px;
+  max-height: 120px;
+  object-fit: cover;
+  object-position: center;
+  background-color: blueviolet;
+}
+
+.details {
+  padding: 10px;
+  flex: 1;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 900;
+  color: #613d2b;
+  font-family: "Nunito Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.day {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  color: #613d2b;
+}
+
+.date {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 9px;
+  color: #613d2b;
+}
+
+.priceContainer {
+  margin-top: 15px;
+}
+
+.price {
+  font-family: "Nunito Sans", sans-serif;
+  color: #974a4a;
+  font-size: 10px;
+}
+
+.subTotal {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  color: #974a4a;
+}
+
+.logoContainer {
+  height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 73px;
+}
+
+.qrcode {
+  max-width: 50px;
+  max-height: 50px;
+  flex: 1;
+}
+
+.waitingApprove {
+  background-color: aquamarine;
+  width: 112px;
+  border-radius: 5px;
+  padding: 3px 0;
+  color: #ff9900;
+  background-color: #ff990025;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+}

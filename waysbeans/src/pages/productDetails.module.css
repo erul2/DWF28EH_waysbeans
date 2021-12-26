@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  padding: 0 196px;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  width: 436px;
+  height: 555px;
+  object-fit: cover;
+  object-position: center;
+  margin-right: 50px;
+}
+
+.name {
+  font-family: "Nunito Sans";
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.stock {
+  font-family: "Nunito Sans";
+  font-size: 18px;
+  color: #974a4a;
+}
+
+.details {
+  width: 500px;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionContainer {
+  flex: 1;
+  overflow: hidden;
+  max-height: 230px;
+}
+
+.descriptionContainer:hover {
+  overflow-y: auto;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Nunito Sans", sans-serif;
+  color: black;
+}
+
+.price {
+  font-family: "Nunito Sans";
+  font-size: 24px;
+  font-weight: 900;
+  color: #974a4a;
+  align-self: end;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.btnCart {
+  background-color: #613d2b;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+}
