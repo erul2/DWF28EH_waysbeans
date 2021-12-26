@@ -6,7 +6,7 @@ exports.getTransactions = async (req, res) => {
   try {
     // query transactions data
     const transactions = await Transactions.findAll({
-      // order: [["createdAt", "DESC"]],
+      order: [["createdAt", "DESC"]],
       include: [
         {
           model: Users,
@@ -22,12 +22,22 @@ exports.getTransactions = async (req, res) => {
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
       ],
-      attributes: { exclude: ["idUser", "createdAt", "updatedAt"] },
+      attributes: { exclude: ["idUser", "updatedAt"] },
     });
 
     const data = transactions.map((item) => {
-      const { id, user, name, email, phone, address, attachment, status } =
-        item;
+      const {
+        id,
+        user,
+        name,
+        email,
+        phone,
+        address,
+        attachment,
+        status,
+        createdAt,
+        posCode,
+      } = item;
 
       const products = item.Products.map((product) => {
         const { id, name, price, description } = product;
@@ -48,9 +58,11 @@ exports.getTransactions = async (req, res) => {
         email,
         phone,
         address,
+        posCode,
         attachment: process.env.UPLOADS + attachment,
         status,
         products,
+        date: createdAt,
       };
     });
 
@@ -68,7 +80,7 @@ exports.getTransactions = async (req, res) => {
 
 // create new transaction
 exports.addTransaction = async (req, res) => {
-  const { name, email, phone, address } = req.body;
+  const { name, email, phone, address, posCode } = req.body;
   const products = JSON.parse(req.body.products);
 
   const schema = Joi.object({
@@ -76,12 +88,20 @@ exports.addTransaction = async (req, res) => {
     email: Joi.string().email().required(),
     address: Joi.string().min(10).required(),
     phone: Joi.string().min(7).required(),
+    posCode: Joi.number().required(),
     // attachment: Joi.string().required(),
     products: Joi.array().required(),
   });
 
   // do validation
-  const { error } = schema.validate({ name, email, address, phone, products });
+  const { error } = schema.validate({
+    name,
+    email,
+    address,
+    phone,
+    products,
+    posCode,
+  });
   const attachment = req.file ? req.file.filename : null;
   if (error || !attachment) {
     return res.status(400).send({
@@ -105,6 +125,7 @@ exports.addTransaction = async (req, res) => {
       email,
       phone,
       address,
+      posCode,
       attachment,
       status: "Waiting approve",
     };
@@ -158,9 +179,11 @@ exports.addTransaction = async (req, res) => {
           email,
           phone,
           address,
-          attachment: process.env.UPLOADS + attachment,
+          posCode,
+          attachment: process.env.UPLOADS + transaction.attachment,
           status: "Waiting approve",
           products: data,
+          date: transaction.createdAt,
         },
       },
     });
@@ -192,7 +215,7 @@ exports.editTransaction = async (req, res) => {
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
       ],
-      attributes: { exclude: ["createdAt", "updatedAt"] },
+      attributes: { exclude: ["updatedAt"] },
     });
 
     if (!transaction) {
@@ -214,6 +237,8 @@ exports.editTransaction = async (req, res) => {
         attachment,
         status,
         Products,
+        createdAt,
+        posCode,
       } = transaction;
 
       const products = Products.map((product) => {
@@ -235,9 +260,11 @@ exports.editTransaction = async (req, res) => {
         email,
         phone,
         address,
+        posCode,
         attachment: process.env.UPLOADS + attachment,
         status,
         products,
+        date: createdAt,
       };
     };
 
@@ -275,12 +302,22 @@ exports.getMyTransactions = async (req, res) => {
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
       ],
-      attributes: { exclude: ["idUser", "createdAt", "updatedAt"] },
+      attributes: { exclude: ["idUser", "updatedAt"] },
     });
 
     const data = transactions.map((item) => {
-      const { id, user, name, email, phone, address, attachment, status } =
-        item;
+      const {
+        id,
+        user,
+        name,
+        email,
+        phone,
+        address,
+        attachment,
+        status,
+        posCode,
+        createdAt,
+      } = item;
 
       const products = item.Products.map((product) => {
         const { id, name, price, description } = product;
@@ -301,9 +338,11 @@ exports.getMyTransactions = async (req, res) => {
         email,
         phone,
         address,
+        posCode,
         attachment: process.env.UPLOADS + attachment,
         status,
         products,
+        date: createdAt,
       };
     });
 

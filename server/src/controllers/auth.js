@@ -50,7 +50,7 @@ exports.login = async (req, res) => {
     }
 
     // user role
-    const role = email === "admin@waysbean.com" ? "admin" : "user";
+    const role = email === "admin@waysbeans.com" ? "admin" : "user";
 
     // generate token
     const token = jwt.sign(

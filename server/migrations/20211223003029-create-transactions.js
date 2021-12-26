@@ -15,7 +15,7 @@ module.exports = {
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        onDelete: "CASCADE",
       },
       name: {
         type: Sequelize.STRING,
@@ -29,12 +29,20 @@ module.exports = {
       address: {
         type: Sequelize.TEXT,
       },
+      posCode: {
+        type: Sequelize.INTEGER,
+      },
       attachment: {
         type: Sequelize.TEXT,
       },
       status: {
         type: Sequelize.STRING,
-        type: Sequelize.ENUM("Waiting approve", "On the way", "Order success"),
+        type: Sequelize.ENUM(
+          "Waiting approve",
+          "On the way",
+          "Order success",
+          "Cancel"
+        ),
       },
       createdAt: {
         allowNull: false,

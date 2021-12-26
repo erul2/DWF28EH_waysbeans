@@ -1,0 +1,79 @@
+.title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #613d2b;
+  margin-bottom: 25px;
+}
+
+.tbBody {
+  border-color: #828282;
+}
+
+.tbHeader {
+  background-color: #e5e5e5;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tbRow {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+.postCode {
+  max-width: 93px;
+}
+
+.waiting {
+  color: #ff9900;
+}
+
+.success {
+  color: #78a85a;
+}
+
+.cancel {
+  color: #e83939;
+}
+
+.onTheWay {
+  color: #00d1ff;
+}
+
+.actionRow {
+  max-width: 192px !important;
+  min-width: 191px;
+}
+
+.actionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnCancel {
+  color: #ffffff;
+  background-color: #ff0742;
+  border: none;
+  border-radius: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  height: 20px;
+  width: 80px;
+}
+
+.btnApprove {
+  margin-left: 10px;
+  color: #ffffff;
+  background-color: #0acf83;
+  border: none;
+  border-radius: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  height: 20px;
+  width: 80px;
+}

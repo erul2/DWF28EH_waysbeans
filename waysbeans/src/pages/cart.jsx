@@ -164,12 +164,7 @@ function CartOrder() {
           )}
         </Container>
       </Container>
-      <Alert
-        show={alert.show}
-        danger
-        hide={() => setAlert({ show: false, message: "" })}
-        message={alert.message}
-      />
+      {alert.show ? <Alert danger message={alert.message} /> : null}
     </>
   );
 }

@@ -81,12 +81,47 @@
 }
 
 .waitingApprove {
-  background-color: aquamarine;
   width: 112px;
   border-radius: 5px;
   padding: 3px 0;
   color: #ff9900;
   background-color: #ff990025;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.success {
+  color: #78a85a;
+  background-color: #78a85a25;
+  width: 112px;
+  border-radius: 5px;
+  padding: 3px 0;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.cancel {
+  color: #e83939;
+  background-color: #e8393925;
+  width: 112px;
+  border-radius: 5px;
+  padding: 3px 0;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.onTheWay {
+  color: #00d1ff;
+  background-color: #00d1ff25;
+  width: 112px;
+  border-radius: 5px;
+  padding: 3px 0;
   font-size: 10px;
   font-weight: bold;
   text-align: center;

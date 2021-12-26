@@ -2,6 +2,20 @@ import styles from "./orderCard.module.css";
 
 export default function OrderCard(props) {
   const product = props.product;
+  let statusStyle = styles.waitingApprove;
+  let status = "Waiting Approve";
+  switch (props.status) {
+    case "On the way":
+      status = "On The Way";
+      statusStyle = styles.onTheWay;
+    case "Cancel":
+      status = "Cancel";
+      statusStyle = styles.cacel;
+    case "Order success":
+      status = "Success";
+      statusStyle = styles.success;
+  }
+
   return (
     <div className={styles.container}>
       <img className={styles.photo} src={product.photo} alt="photo" />
@@ -26,7 +40,7 @@ export default function OrderCard(props) {
         {props.status ? (
           <>
             <img className={styles.qrcode} src="/icon/qrcode.svg" alt="qr" />
-            <div className={styles.waitingApprove}>{props.status}</div>
+            <div className={statusStyle}>{status}</div>
           </>
         ) : null}
       </div>

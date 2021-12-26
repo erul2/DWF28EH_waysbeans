@@ -50,7 +50,7 @@ export default function Shipping() {
       formData.set("name", form.name);
       formData.set("email", form.email);
       formData.set("phone", form.phone);
-      //formData.set("posCode", form.posCode); // backend not ready yet
+      formData.set("posCode", form.posCode);
       formData.set("address", form.address);
       formData.set("attachment", form.attachment[0], form.attachment[0].name);
       formData.set(
@@ -192,7 +192,7 @@ export default function Shipping() {
         </Row>
       </Container>
 
-      <Alert show={alert.show} message={alert.message} />
+      {alert.show ? <Alert message={alert.message} /> : null}
     </>
   );
 }

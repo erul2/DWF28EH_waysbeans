@@ -27,11 +27,13 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       phone: DataTypes.STRING,
       address: DataTypes.TEXT,
+      posCode: DataTypes.INTEGER,
       attachment: DataTypes.TEXT,
       status: DataTypes.ENUM([
         "Waiting approve",
         "On the way",
         "Order success",
+        "Cancel",
       ]),
     },
     {
