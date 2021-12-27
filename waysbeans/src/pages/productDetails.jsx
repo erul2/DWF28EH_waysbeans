@@ -42,42 +42,40 @@ export default function ProductDetails() {
     <>
       <Navbar />
       <Container className="px-xs-1 px-xl-5">
-        <Container className="px-xs-1 px-lg-5 mb-5">
-          <Row
-            xs={1}
-            lg={2}
-            className="justify-content-center align-items-center"
-          >
-            <Col xs={8} lg={6} className="mb-5">
-              <img
-                className={styles.photo}
-                src={product?.photo}
-                alt="produt photo"
-              />
-            </Col>
-            <Col className="mb-5">
-              <div className={styles.details}>
-                <h2 className={styles.name}>{product && product.name}</h2>
-                <p className={styles.stock}>{`Stock : ${product?.stock}`}</p>
-                <div className={styles.descriptionContainer}>
-                  <p className={styles.description}>{product?.description}</p>
-                </div>
-                <p className={styles.price}>
-                  {product
-                    ? "Rp." +
-                      toRupiah(product.price, {
-                        symbol: null,
-                        floatingPoint: 0,
-                      })
-                    : null}
-                </p>
-                <button onClick={addCart} className={styles.btnCart}>
-                  Add Cart
-                </button>
+        <Row
+          xs={1}
+          lg={2}
+          className="px-xs-1 px-lg-5 mb-5 justify-content-center align-items-center "
+        >
+          <Col xs={8} lg={6} className="mb-5">
+            <img
+              className={styles.photo}
+              src={product?.photo}
+              alt="produt photo"
+            />
+          </Col>
+          <Col className="mb-5">
+            <div className={styles.details}>
+              <h2 className={styles.name}>{product && product.name}</h2>
+              <p className={styles.stock}>{`Stock : ${product?.stock}`}</p>
+              <div className={styles.descriptionContainer}>
+                <p className={styles.description}>{product?.description}</p>
               </div>
-            </Col>
-          </Row>
-        </Container>
+              <p className={styles.price}>
+                {product
+                  ? "Rp." +
+                    toRupiah(product.price, {
+                      symbol: null,
+                      floatingPoint: 0,
+                    })
+                  : null}
+              </p>
+              <button onClick={addCart} className={styles.btnCart}>
+                Add Cart
+              </button>
+            </div>
+          </Col>
+        </Row>
       </Container>
     </>
   );

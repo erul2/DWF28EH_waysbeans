@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../context/cartContext";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Modal } from "react-bootstrap";
 import Navbar from "../components/navbar/navbar";
 import styles from "./shipping.module.css";
 import OrderCard from "../components/orderCard";
@@ -26,14 +26,23 @@ export default function Shipping() {
     address: "",
     attachment: [],
   });
+  const [preview, setPreview] = useState({ show: false, url: "" });
 
   const handleChange = (e) => {
+    let value = "";
+
+    if (e.target.type === "file") {
+      let url = URL.createObjectURL(e.target.files[0]);
+      setPreview({ ...preview, url });
+      value = e.target.files;
+    } else {
+      value = e.target.value;
+    }
+
     setForm({
       ...form,
-      [e.target.name]:
-        e.target.type === "file" ? e.target.files : e.target.value,
+      [e.target.name]: value,
     });
-    console.log(e.target.type);
   };
 
   const handleSubmit = async (e) => {
@@ -76,25 +85,16 @@ export default function Shipping() {
       setTimeout(() => {
         navigate("/profile");
         cartDispatch({ type: "CLEAR_CART" });
-      }, 3000);
+      }, 4000);
     } catch (error) {
       if (error.response) {
         setLoading({
           isLodaing: false,
           error: error.response.data.message,
         });
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
       } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-        // http.ClientRequest in node.js
         console.log(error.request);
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
       console.log(error.config);
@@ -164,22 +164,31 @@ export default function Shipping() {
                   name="address"
                   value={form.address}
                 ></textarea>
-
-                <label className={styles.attachment} htmlFor="attachment">
-                  <span>Attache of transaction</span>
-                  <img
-                    className={styles.attachIcon}
-                    src="/icon/attach.svg"
-                    alt=""
+                <div className="d-flex">
+                  <label className={styles.attachment} htmlFor="attachment">
+                    <span>Attache of transaction</span>
+                    <img
+                      className={styles.attachIcon}
+                      src="/icon/attach.svg"
+                      alt=""
+                    />
+                  </label>
+                  <input
+                    id="attachment"
+                    type="file"
+                    name="attachment"
+                    hidden
+                    onChange={handleChange}
                   />
-                </label>
-                <input
-                  id="attachment"
-                  type="file"
-                  name="attachment"
-                  hidden
-                  onChange={handleChange}
-                />
+                  {preview.url ? (
+                    <img
+                      src={preview.url}
+                      className={styles.preview}
+                      alt="preview"
+                      onClick={() => setPreview({ ...preview, show: true })}
+                    />
+                  ) : null}
+                </div>
               </form>
             </Col>
             <Col>
@@ -200,7 +209,18 @@ export default function Shipping() {
           </Row>
         </Container>
       </Container>
-
+      {preview.show ? (
+        <Modal
+          size="sm"
+          show={preview.show}
+          onHide={() => setPreview({ ...preview, show: false })}
+          centered
+        >
+          <Modal.Body>
+            <img src={preview.url} alt="Preview" style={{ width: "100%" }} />
+          </Modal.Body>
+        </Modal>
+      ) : null}
       {alert.show ? <Alert message={alert.message} /> : null}
     </>
   );

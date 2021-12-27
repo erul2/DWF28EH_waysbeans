@@ -65,3 +65,15 @@
   border-radius: 5px;
   height: 40px;
 }
+
+.preview {
+  max-height: 100px;
+  border: 3px solid #613d2b;
+  border-radius: 5px;
+  margin-left: 25px;
+}
+
+.preview:hover,
+.attachment:hover {
+  cursor: pointer;
+}

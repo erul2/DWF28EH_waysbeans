@@ -29,9 +29,13 @@ export default function Profile() {
   return (
     <>
       <Navbar />
-      <Container className="px-xs-1 px-md-3 px-xl-5 mt-5 pb-5">
-        <Row>
-          <Col md={7} xl={8} className="mb-sm-5 mb-lg-0">
+      <Container className="px-xs-1 px-xl-5">
+        <Row
+          xs={1}
+          lg={2}
+          className="px-xs-1 px-lg-5 mb-5 justify-content-flex-center align-items-strat"
+        >
+          <Col className="mb-sm-5 mb-lg-0">
             <h2 className={styles.title}>My Profile</h2>
             <div className="d-flex">
               <div className="d-flex flex-column">
@@ -61,7 +65,7 @@ export default function Profile() {
               </div>
             </div>
           </Col>
-          <Col md={5} xl={4}>
+          <Col>
             <h2 className={styles.title}>My Transactions</h2>
             {trx?.length > 0 ? (
               trx.map((item, index) => (

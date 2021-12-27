@@ -50,8 +50,8 @@ function CartOrder() {
   return (
     <>
       <Navbar />
-      <Container className="px-xs-1 px-md-3 px-xl-5">
-        <Container className="mt-5 pb-5">
+      <Container className="px-xs-1 px-xl-5">
+        <Container className="px-xs-1 px-lg-5 mb-5 justify-content-flex-center align-items-strat">
           {cart.products?.id ? (
             <>
               <h2 className={styles.title}>My Cart</h2>
