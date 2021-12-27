@@ -285,7 +285,7 @@ exports.getMyTransactions = async (req, res) => {
   try {
     // query transactions data
     const transactions = await Transactions.findAll({
-      // order: [["createdAt", "DESC"]],
+      order: [["createdAt", "DESC"]],
       where: { idUser: req.user.id },
       include: [
         {

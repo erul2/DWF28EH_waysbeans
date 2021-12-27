@@ -6,6 +6,10 @@
   margin-bottom: 15px;
 }
 
+.container:hover {
+  cursor: pointer;
+}
+
 .photo {
   min-width: 80px;
   min-height: 120px;

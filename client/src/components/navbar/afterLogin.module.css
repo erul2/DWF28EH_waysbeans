@@ -1,0 +1,11 @@
+.dropdownItem {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.badge {
+  top: 15px;
+  right: -18px;
+}

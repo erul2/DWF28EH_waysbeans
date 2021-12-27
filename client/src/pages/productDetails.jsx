@@ -10,12 +10,14 @@ import { CartContext } from "../context/cartContext";
 export default function ProductDetails() {
   const id = useParams().id;
   const [product, setProduct] = useState(null);
+
   const [cart, cartDispatch] = useContext(CartContext);
 
   const getProductDetail = async () => {
     try {
       const response = await API.get(`/product/${id}`);
       setProduct(response.data.data.products);
+      document.title = "WaysBeans - " + response.data.data.products.name;
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +49,7 @@ export default function ProductDetails() {
           lg={2}
           className="px-xs-1 px-lg-5 mb-5 justify-content-center align-items-center "
         >
-          <Col xs={8} lg={6} className="mb-5">
+          <Col xs={8} lg={6} className="mb-5 ">
             <img
               className={styles.photo}
               src={product?.photo}

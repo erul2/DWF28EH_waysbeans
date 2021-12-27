@@ -3,15 +3,14 @@ import { useNavigate } from "react-router-dom";
 import OrderList from "../components/OrderList";
 import { API } from "../config/api";
 import styles from "./cart.module.css";
-import { convert as rupiah } from "rupiah-format";
-import { UserContext } from "../context/userContext";
+import toRupiah from "@develoka/angka-rupiah-js";
 import { CartContext } from "../context/cartContext";
 import Navbar from "../components/navbar/navbar";
 import { Container, Row, Col } from "react-bootstrap";
 import Alert from "../components/modal/alert";
 
 function CartOrder() {
-  document.title = "WaysFood - Cart Order";
+  document.title = "WaysBeans - Cart";
   const [alert, setAlert] = useState({
     show: false,
     message: "",
@@ -31,7 +30,10 @@ function CartOrder() {
   };
 
   const goBack = () => {
-    setAlert({ show: true, message: "Tidak ada product di cart" });
+    setAlert({
+      show: true,
+      message: "Your cart is empty please check our product",
+    });
     setTimeout(() => navigate("/"), 3000);
   };
 
@@ -52,7 +54,7 @@ function CartOrder() {
       <Navbar />
       <Container className="px-xs-1 px-xl-5">
         <Container className="px-xs-1 px-lg-5 mb-5 justify-content-flex-center align-items-strat">
-          {cart.products?.id ? (
+          {product?.id ? (
             <>
               <h2 className={styles.title}>My Cart</h2>
               <Row>
@@ -75,11 +77,17 @@ function CartOrder() {
                     <tbody>
                       <tr>
                         <td className={styles.text}>Subtotal</td>
-                        <td className={styles.right}>20000</td>
+                        <td className={styles.right}>
+                          {"Rp." +
+                            toRupiah(product.price, {
+                              symbol: null,
+                              floatingPoint: 0,
+                            })}
+                        </td>
                       </tr>
                       <tr>
                         <td className={`${styles.text} pb-3`}>Qty</td>
-                        <td className={styles.right}>20000</td>
+                        <td className={styles.right}>{cart.products.qty}</td>
                       </tr>
                       <tr className={styles.dividerGroup}>
                         <td className={styles.divider} />
@@ -87,7 +95,13 @@ function CartOrder() {
                       </tr>
                       <tr>
                         <td className={styles.textTotal}>Total</td>
-                        <td className={styles.textTotalRight}>20000</td>
+                        <td className={styles.textTotalRight}>
+                          {"Rp." +
+                            toRupiah(product.price * cart.products.qty, {
+                              symbol: null,
+                              floatingPoint: 0,
+                            })}
+                        </td>
                       </tr>
                     </tbody>
                   </table>

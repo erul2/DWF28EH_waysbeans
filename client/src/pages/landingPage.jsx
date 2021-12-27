@@ -7,6 +7,7 @@ import ProductsList from "../components/product/producsList";
 import Hero from "../components/hero";
 
 export default function LandingPage() {
+  document.title = "WaysBeans";
   const [state, dispatch] = useContext(UserContext);
   const [modal, setModal] = useState({
     show: false,

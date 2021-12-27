@@ -10,6 +10,7 @@ import Alert from "../components/modal/alert";
 import { useNavigate } from "react-router-dom";
 
 export default function Shipping() {
+  document.title = "WaysBeans - Shipping";
   const navigate = useNavigate();
   const [cart, cartDispatch] = useContext(CartContext);
   const [product, setProduct] = useState({});
@@ -192,16 +193,19 @@ export default function Shipping() {
               </form>
             </Col>
             <Col>
-              <OrderCard
-                product={{
-                  photo: product?.photo,
-                  name: product?.name,
-                  date: ["sunday", "22 dec 2021"],
-                  price: product?.price,
-                  qty: cart.products.qty,
-                  subTotal: 600,
-                }}
-              />
+              {product.id ? (
+                <OrderCard
+                  product={{
+                    photo: product?.photo,
+                    name: product?.name,
+                    date: ["sunday", "22 dec 2021"],
+                    price: product?.price,
+                    qty: cart.products.qty,
+                    subTotal: 600,
+                  }}
+                />
+              ) : null}
+
               <button onClick={handleSubmit} className={styles.btnPay}>
                 Pay
               </button>

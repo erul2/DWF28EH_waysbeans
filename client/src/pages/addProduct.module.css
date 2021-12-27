@@ -85,3 +85,14 @@
   object-position: center;
   background-color: greenyellow;
 }
+
+.imgPhoto {
+  width: 200px;
+}
+
+.imgDesc {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: #613d2b;
+}

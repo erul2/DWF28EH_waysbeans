@@ -145,8 +145,21 @@ export default function AddProduct() {
               Add Product
             </button>
           </Col>
-          <Col sm={12} md={6}>
-            <img className={styles.photo} src={preview} alt="photo" />
+          <Col
+            sm={12}
+            md={6}
+            className="d-flex flex-column align-items-center justify-content-center"
+          >
+            {preview ? (
+              <img className={styles.photo} src={preview} alt="photo" />
+            ) : (
+              <>
+                <img className={styles.imgPhoto} src="/icon/gallery.svg" />
+                <div className={styles.imgDesc}>
+                  Please Attach Product Photo
+                </div>
+              </>
+            )}
           </Col>
         </Row>
       </Container>

@@ -5,6 +5,7 @@ const Joi = require("joi");
 exports.getProducts = async (req, res) => {
   try {
     const products = await Products.findAll({
+      order: [["createdAt", "DESC"]],
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
 

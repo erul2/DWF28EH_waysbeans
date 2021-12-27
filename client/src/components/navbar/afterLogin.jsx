@@ -17,8 +17,15 @@ export default function AfterLogin() {
   return (
     <>
       {state.user.email !== "admin@waysbeans.com" ? (
-        <Link to="/cart" className="position-relative">
-          <img src="/icon/shopping-basket.svg" alt="cart" />{" "}
+        <Link to="/cart" className="position-relative me-2">
+          <img
+            src="/icon/shopping-basket.svg"
+            alt="cart"
+            style={{
+              width: "35px",
+              height: "35px",
+            }}
+          />{" "}
           <span
             className={`position-absolute translate-middle badge rounded-pill bg-danger ${styles.badge}`}
           >
@@ -31,12 +38,14 @@ export default function AfterLogin() {
         title={
           <img
             src={
-              state.user.image ? state.user.image : "/img/avatar/default.png"
+              state.user.image
+                ? state.user.image
+                : "/img/avatar/user-default.png"
             }
             alt="icon"
             style={{
-              width: "50px",
-              height: "50px",
+              width: "60px",
+              height: "60px",
               objectFit: "cover",
               borderRadius: "50%",
             }}

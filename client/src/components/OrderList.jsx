@@ -1,5 +1,5 @@
 import React from "react";
-import { convert as rupiah } from "rupiah-format";
+import toRupiah from "@develoka/angka-rupiah-js";
 import cssMod from "./OrderList.module.css";
 
 function OrderList(props) {
@@ -21,7 +21,11 @@ function OrderList(props) {
         </div>
       </div>
       <div xs={3} className={`${cssMod.price} d-flex flex-column `}>
-        {rupiah(props.price)}
+        {"Rp." +
+          toRupiah(props.price, {
+            symbol: null,
+            floatingPoint: 0,
+          })}
         <img
           src="/icon/trash.svg"
           width="20px"
