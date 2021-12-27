@@ -3,13 +3,20 @@ import { UserContext } from "../context/userContext";
 import Navbar from "../components/navbar/navbar";
 import { API } from "../config/api";
 import { Link } from "react-router-dom";
-import { Container, Col, Row, Modal, Table } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import styles from "./Profile.module.css";
 import OrderCard from "../components/orderCard";
+import { TransactionDetails } from "../components/modal/transactionDetails";
 
 export default function Profile() {
   const [state, dispatch] = useContext(UserContext);
-  document.title = "WaysBeans - Profile - " + state.user.fullName;
+  const [user, setUser] = useState({
+    id: "",
+    fullName: "WaysBeans",
+    email: "waysbeans@mail.com",
+    photo: "",
+  });
+  document.title = "WaysBeans - Profile - " + user.fullName;
   const [trx, setTrx] = useState(null);
   const [details, setDetails] = useState({ show: false, index: 0, id: 0 });
 
@@ -17,35 +24,26 @@ export default function Profile() {
     try {
       const response = await API.get("/my-transactions");
       setTrx(response.data.data.transactions);
-      console.log(response.data.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const accOrderComplete = async (id) => {
+  const getUser = async () => {
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const body = JSON.stringify({
-        status: "Order success",
-      });
-
-      const response = await API.patch(`/transaction/${id}`, body, config);
-      getTrx();
-      console.log(response.data.data);
+      const response = await API.get(`/user/${state.user.id}`);
+      setUser(response.data.data.users);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getTrx();
-  }, [state.user]);
+    if (state.user.id) {
+      getUser();
+      getTrx();
+    }
+  }, [state.user?.id]);
 
   return (
     <>
@@ -64,9 +62,7 @@ export default function Profile() {
                   <img
                     className="mb-4"
                     src={
-                      state.user.image
-                        ? state.user.image
-                        : "/img/avatar/user-default.png"
+                      user.photo ? user.photo : "/img/avatar/user-default.png"
                     }
                     width="180px"
                     height="221px"
@@ -77,11 +73,11 @@ export default function Profile() {
               <div className="ms-4">
                 <div className={styles.dataGroup}>
                   <div className={styles.dataTitle}>Full Name</div>
-                  <div className={styles.value}>{state.user.fullName}</div>
+                  <div className={styles.value}>{user.fullName}</div>
                 </div>
                 <div className={styles.dataGroup}>
                   <div className={styles.dataTitle}>Email</div>
-                  <div className={styles.value}>{state.user.email}</div>
+                  <div className={styles.value}>{user.email}</div>
                 </div>
               </div>
             </div>
@@ -109,69 +105,12 @@ export default function Profile() {
           </Col>
         </Row>
         {details.show ? (
-          <Modal
-            centered
-            size="lg"
+          <TransactionDetails
             show={details.show}
-            onHide={() => setDetails({ ...details, show: false })}
-          >
-            <Modal.Header closeButton>
-              {/* <Modal.Title>{"Transactions " + (details.id + 1)}</Modal.Title> */}
-            </Modal.Header>
-            <Modal.Body>
-              <Row lg={2} xs={1}>
-                <Col>
-                  <Table bordered hover>
-                    <thead>
-                      <tr>
-                        <th colSpan={2}>Shipping Detail</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Name</td>
-                        <td>{trx[details?.index].name}</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td>{trx[details?.index].email}</td>
-                      </tr>
-                      <tr>
-                        <td>Phone</td>
-                        <td>{trx[details?.index].phone}</td>
-                      </tr>
-                      <tr>
-                        <td>Pos Code</td>
-                        <td>{trx[details?.index].posCode}</td>
-                      </tr>
-                      <tr>
-                        <td>Address</td>
-                        <td>{trx[details?.index].address}</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </Col>
-                <Col>
-                  <OrderCard
-                    product={{
-                      name: trx[details?.index].products[0].name,
-                      photo: trx[details?.index].products[0].photo,
-                      date: trx[details?.index].date,
-                      price: trx[details?.index].products[0].price,
-                      qty: trx[details?.index].products[0].orderQuantity,
-                    }}
-                    status={trx[details.index].status}
-                  />
-                  <button
-                    className={styles.btnApprove}
-                    onClick={() => accOrderComplete(details.id)}
-                  >
-                    Approve Order
-                  </button>
-                </Col>
-              </Row>
-            </Modal.Body>
-          </Modal>
+            hide={() => setDetails({ ...details, show: false })}
+            trx={trx[details.index]}
+            reload={getTrx}
+          />
         ) : null}
       </Container>
     </>

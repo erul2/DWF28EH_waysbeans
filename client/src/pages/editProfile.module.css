@@ -1,34 +1,86 @@
+.title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #613d2b;
+  margin-bottom: 25px;
+}
+
+.container {
+  display: flex;
+  padding: 0 196px;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  width: 472px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #613d2b49;
+  color: #613d2b93;
+  font-size: 18px;
+  padding: 10px;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 3px solid #613d2b;
+}
+
+.attachment {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 18px;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #613d2b49;
+  color: #613d2b93;
+  border: 3px solid #613d2b;
+  width: fit-content;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.attachIcon {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.textarea {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #613d2b49;
+  color: #613d2b93;
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 3px solid #613d2b;
+}
+
+.btnAdd {
   width: 100%;
-  height: 3rem;
-  background-color: #d2d2d23a;
-  border: 2px solid #766c6c;
-  color: #1f1f1f;
+  background-color: #613d2b;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
   border-radius: 5px;
-  padding: 0.3rem 1rem;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  height: 40px;
 }
 
-.btn {
-  height: 2.5rem !important;
-  padding: 0 !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-}
-
-.mapbtn {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 3rem !important;
-  border-radius: 5px;
-  background: var(--primary);
-}
-
-.mapbtn img {
-  margin-left: 0.5rem;
+.photo {
+  min-height: 200px;
+  max-height: 300px;
+  max-width: inherit;
+  object-fit: cover;
+  object-position: center;
 }

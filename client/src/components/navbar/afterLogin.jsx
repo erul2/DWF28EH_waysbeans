@@ -9,10 +9,6 @@ export default function AfterLogin() {
   const [state, dispatch] = useContext(UserContext);
   const [cart, cartDispatch] = useContext(CartContext);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   const navigate = useNavigate();
   return (
     <>
@@ -38,8 +34,8 @@ export default function AfterLogin() {
         title={
           <img
             src={
-              state.user.image
-                ? state.user.image
+              state.user.photo
+                ? state.user.photo
                 : "/img/avatar/user-default.png"
             }
             alt="icon"

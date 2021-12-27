@@ -1,0 +1,24 @@
+.btnApprove {
+  width: 100%;
+  background-color: #613d2b;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #613d2b;
+}
+
+.tbBody {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}

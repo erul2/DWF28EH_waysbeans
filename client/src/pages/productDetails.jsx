@@ -24,13 +24,15 @@ export default function ProductDetails() {
   };
 
   const addCart = () => {
-    console.log(product);
     return cartDispatch({
       type: "ADD_ORDER",
       payload: {
         products: {
           id: product.id,
-          qty: cart.products?.qty ? cart.products.qty + 1 : 1,
+          qty:
+            cart.products?.qty && cart.products.id === product.id
+              ? cart.products.qty + 1
+              : 1,
         },
       },
     });

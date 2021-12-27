@@ -11,3 +11,11 @@ export const setAuthToken = (token) => {
     delete API.defaults.headers.common["Authorization"];
   }
 };
+
+// config
+
+export const jsonConfig = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
