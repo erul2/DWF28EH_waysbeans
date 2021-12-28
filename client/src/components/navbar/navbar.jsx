@@ -5,7 +5,7 @@ import AfterLogin from "./afterLogin";
 import BeforeLogin from "./beforeLogin";
 
 export default function Navbar(props) {
-  const [state, disptch] = useContext(UserContext);
+  const [state] = useContext(UserContext);
 
   return (
     <BNavbar

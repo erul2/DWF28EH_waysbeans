@@ -148,12 +148,12 @@ function EditProfile() {
             className="d-flex flex-column align-items-center justify-content-center"
           >
             {preview ? (
-              <img className={styles.photo} src={preview} alt="photo" />
+              <img className={styles.photo} src={preview} alt="" />
             ) : (
               <img
                 className={styles.photo}
                 src="/img/avatar/user-default.png"
-                alt="photo"
+                alt=""
               />
             )}
           </Col>

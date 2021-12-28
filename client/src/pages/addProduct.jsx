@@ -152,10 +152,14 @@ export default function AddProduct() {
             className="d-flex flex-column align-items-center justify-content-center"
           >
             {preview ? (
-              <img className={styles.photo} src={preview} alt="photo" />
+              <img className={styles.photo} src={preview} alt="" />
             ) : (
               <>
-                <img className={styles.imgPhoto} src="/icon/gallery.svg" />
+                <img
+                  className={styles.imgPhoto}
+                  src="/icon/gallery.svg"
+                  alt=""
+                />
                 <div className={styles.imgDesc}>
                   Please Attach Product Photo
                 </div>

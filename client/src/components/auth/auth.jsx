@@ -83,7 +83,6 @@ export default function Auth(props) {
             onChange={handleOnChange}
             type="password"
             placeholder="Password"
-            className="modalInput"
             value={form.password}
             name="password"
             className={styles.modalInput}
@@ -94,7 +93,6 @@ export default function Auth(props) {
               onChange={handleOnChange}
               type="text"
               placeholder="Full Name"
-              className="modalInput"
               value={form.fullName}
               name="fullName"
               className={styles.modalInput}

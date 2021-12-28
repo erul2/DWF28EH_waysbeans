@@ -94,18 +94,21 @@ export default function IncomeTransactions() {
 
                   switch (item.status) {
                     case "Order success":
-                      action = <img src="/icon/success.svg" />;
+                      action = <img src="/icon/success.svg" alt="" />;
                       status = <span className={styles.success}>Success</span>;
                       break;
                     case "On the way":
-                      action = <img src="/icon/success.svg" />;
+                      action = <img src="/icon/success.svg" alt="" />;
                       status = (
                         <span className={styles.onTheWay}>On The Way</span>
                       );
                       break;
                     case "Cancel":
                       status = <span className={styles.cancel}>Cancel</span>;
-                      action = <img src="/icon/cancel.svg" />;
+                      action = <img src="/icon/cancel.svg" alt="" />;
+                      break;
+                    default:
+                      console.log("error");
                   }
 
                   return (

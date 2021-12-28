@@ -25,11 +25,13 @@ export default function OrderCard(props) {
       status = "Success";
       statusStyle = styles.success;
       break;
+    default:
+      console.log("error");
   }
 
   return (
     <div className={styles.container} onClick={props.onClick}>
-      <img className={styles.photo} src={product.photo} alt="photo" />
+      <img className={styles.photo} src={product.photo} alt="" />
       <div className={styles.details}>
         <h3 className={styles.name}>{product.name}</h3>
         <span className={styles.day}>{date.day + ", "}</span>
