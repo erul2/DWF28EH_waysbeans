@@ -38,6 +38,25 @@ export default function Profile() {
     }
   };
 
+  const complete = async (id) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify({
+        status: "Order success",
+      });
+
+      await API.patch(`/transaction/${id}`, body, config);
+      getTrx();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (state.user.id) {
       getUser();
@@ -97,6 +116,7 @@ export default function Profile() {
                     qty: item.products[0].orderQuantity,
                   }}
                   status={item.status}
+                  complete={() => complete(item.id)}
                 />
               ))
             ) : (

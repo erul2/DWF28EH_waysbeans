@@ -60,7 +60,13 @@ export default function OrderCard(props) {
         {props.status ? (
           <>
             <QRcode bgColor="#00000000" size={50} value={status} />
-            <div className={statusStyle}>{status}</div>
+            {props.status === "On the way" ? (
+              <button className={styles.btnComplete} onClick={props.complete}>
+                Complete
+              </button>
+            ) : (
+              <div className={statusStyle}>{status}</div>
+            )}
           </>
         ) : null}
       </div>
