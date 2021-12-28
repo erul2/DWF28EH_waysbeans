@@ -25,10 +25,9 @@
   width: 350px;
   height: 50px;
   background-color: #613d2b57 !important;
-  border: 2px solid #613d2b;
+  border: 2px solid #613d2b !important;
   font-size: 18px;
   margin-bottom: 1.5rem;
-  outline: none;
 }
 
 .modalBtn {

@@ -11,18 +11,13 @@ export default function Navbar(props) {
     <BNavbar
       expand="md"
       className="shadow mb-5 py-0"
-      style={{ height: "80px" }}
+      style={{ height: "80px", backgroundColor: "#F5F5F5" }}
     >
       <Container>
         <a href="/" className={`text-decoration-none`}>
           <img alt="Home" src="/icon/navLogo.svg" style={{ width: "163px" }} />
         </a>
         <Nav className="ms-auto"></Nav>
-        {/* {state.isLogin ? (
-          <AfterLogin />
-        ) : (
-          <BeforeLogin setModal={props.setModal} />
-        )} */}
 
         {state.isLogin ? (
           <AfterLogin />

@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
 import { Container } from "react-bootstrap";
 import Navbar from "../components/navbar/navbar";

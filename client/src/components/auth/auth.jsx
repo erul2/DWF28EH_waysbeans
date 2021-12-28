@@ -50,53 +50,6 @@ export default function Auth(props) {
         });
       }
     );
-
-    // try {
-    //   e.preventDefault();
-    //   // configuration
-    //   const config = {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   };
-    //   const loginData =
-    //     props.type === "LOGIN"
-    //       ? { email: form.email, password: form.password }
-    //       : form;
-    //   // data Body
-    //   const body = JSON.stringify(loginData);
-    //   // insert data login proccess
-    //   const response = await API.post(
-    //     props.type === "LOGIN" ? "/login" : "/register",
-    //     body,
-    //     config
-    //   );
-    //   if (response?.status === 200) {
-    //     const payload = response.data.data;
-    //     // send data to useContext
-    //     payload.token = response.data.data.user.token;
-    //     dispatch({
-    //       type: "LOGIN_SUCCESS",
-    //       payload,
-    //     });
-    //   }
-    //   props.close();
-    //   navigate("/");
-    // } catch (error) {
-    //   if (error.response) {
-    //     setLoading({
-    //       isLodaing: false,
-    //       success: false,
-    //       error: true,
-    //       message: error.response.data.message,
-    //     });
-    //   } else if (error.request) {
-    //     console.log(error.request);
-    //   } else {
-    //     console.log("Error", error.message);
-    //   }
-    //   console.log(error.config);
-    // }
   };
 
   useEffect(() => {

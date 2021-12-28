@@ -1,61 +1,11 @@
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import Navbar from "../components/navbar/navbar";
-import { API, setAuthToken } from "../config/api";
-import Alert from "../components/modal/alert";
+import { API } from "../config/api";
 import styles from "./incomeTransactions.module.css";
 
 export default function IncomeTransactions() {
-  const [transactions, setTransactions] = useState([
-    {
-      id: 1,
-      name: "Sugeng no pants",
-      address: "cileungsi",
-      postCode: 16820,
-      products: [
-        {
-          name: "Guatemala Beans",
-        },
-      ],
-      status: "Waiting approve",
-    },
-    {
-      id: 1,
-      name: "Sugeng no pants",
-      address: "cileungsi",
-      postCode: 16820,
-      products: [
-        {
-          name: "Guatemala Beans",
-        },
-      ],
-      status: "Order success",
-    },
-    {
-      id: 1,
-      name: "Sugeng no pants",
-      address: "cileungsi",
-      postCode: 16820,
-      products: [
-        {
-          name: "Guatemala Beans",
-        },
-      ],
-      status: "Cancel",
-    },
-    {
-      id: 1,
-      name: "Sugeng no pants",
-      address: "cileungsi",
-      postCode: 16820,
-      products: [
-        {
-          name: "Guatemala Beans",
-        },
-      ],
-      status: "On the way",
-    },
-  ]);
+  const [transactions, setTransactions] = useState([]);
 
   const getTransactions = async (set) => {
     try {
@@ -100,7 +50,6 @@ export default function IncomeTransactions() {
   };
 
   useEffect(() => {
-    // setAuthToken(localStorage.getItem("token"));
     getTransactions(setTransactions);
   }, []);
 
@@ -175,7 +124,11 @@ export default function IncomeTransactions() {
                 })}
               </tbody>
             </Table>
-          ) : null}
+          ) : (
+            <Container className="d-flex align-items-center justify-content-center mt-5 pt-5">
+              <h4>No Transactions yet</h4>
+            </Container>
+          )}
         </div>
       </Container>
     </>

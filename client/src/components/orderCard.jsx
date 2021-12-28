@@ -19,7 +19,7 @@ export default function OrderCard(props) {
       break;
     case "Cancel":
       status = "Cancel";
-      statusStyle = styles.cacel;
+      statusStyle = styles.cancel;
       break;
     case "Order success":
       status = "Success";

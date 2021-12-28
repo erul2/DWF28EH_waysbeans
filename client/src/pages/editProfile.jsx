@@ -3,7 +3,7 @@ import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { API } from "../config/api";
 import Navbar from "../components/navbar/navbar";
-import { Container, Row, Col, Modal } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import styles from "./editProfile.module.css";
 import MiniAlert from "../components/modal/miniAlert";
 import Alert from "../components/modal/alert";

@@ -39,12 +39,13 @@ export default function AddProduct() {
       if (form.photo !== "")
         formData.set("photo", form.photo[0], form.photo[0].name);
 
-      const response = await API.post("/product", formData, config);
+      await API.post("/product", formData, config);
 
-      if (true) {
-        setLoading({ isLoading: true });
-        setTimeout(() => navigate("/"), 2000);
-      }
+      setLoading({ isLoading: true });
+
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (error) {
       if (error.response) {
         setLoading({
@@ -164,7 +165,9 @@ export default function AddProduct() {
         </Row>
       </Container>
       {loading.isLoading ? (
-        <Alert message={loading.success ? "Success Add Product" : "Loading"} />
+        <Alert
+          message={loading.isLoading ? "Success Add Product" : "Loading"}
+        />
       ) : null}
     </>
   );
