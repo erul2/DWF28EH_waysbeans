@@ -198,7 +198,7 @@ export default function Shipping() {
                   product={{
                     photo: product?.photo,
                     name: product?.name,
-                    date: ["sunday", "22 dec 2021"],
+                    date: new Date(),
                     price: product?.price,
                     qty: cart.products.qty,
                     subTotal: 600,

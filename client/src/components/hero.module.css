@@ -36,7 +36,7 @@
 .imageContainer {
   position: absolute;
   top: 30px;
-  right: 0px;
+  right: -15px;
 }
 
 .image {

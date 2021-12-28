@@ -18,10 +18,21 @@ export default function Navbar(props) {
           <img alt="Home" src="/icon/navLogo.svg" style={{ width: "163px" }} />
         </a>
         <Nav className="ms-auto"></Nav>
-        {state.isLogin ? (
+        {/* {state.isLogin ? (
           <AfterLogin />
         ) : (
           <BeforeLogin setModal={props.setModal} />
+        )} */}
+
+        {state.isLogin ? (
+          <AfterLogin />
+        ) : (
+          <div>
+            <BNavbar.Toggle aria-controls="basic-navbar-nav" />
+            <BNavbar.Collapse id="basic-navbar-nav">
+              <BeforeLogin setModal={props.setModal} />
+            </BNavbar.Collapse>
+          </div>
         )}
       </Container>
     </BNavbar>
