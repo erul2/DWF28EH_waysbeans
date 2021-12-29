@@ -106,7 +106,11 @@ export default function Profile() {
             {trx?.length > 0 ? (
               trx.map((item, index) => (
                 <OrderCard
-                  onClick={() => setDetails({ show: true, index, id: item.id })}
+                  onClick={
+                    item.status !== "On the way"
+                      ? () => setDetails({ show: true, index, id: item.id })
+                      : null
+                  }
                   key={index}
                   product={{
                     name: item.products[0].name,
